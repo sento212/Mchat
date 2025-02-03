@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Form, Stack, Row, Col } from "react-bootstrap";
-import listchat from "../../../request_api/web_listchat";
+import listchat from "../../request_api/web_listchat";
 
 export default function Isichat({ token, id, user }) {
   const [Chat, setChat] = useState("");

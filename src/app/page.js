@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { sesions, reset } from "../../store/slice/seasionslice";
-import { useDispatch } from "react-redux";
 import Alert from "../compenent/alert";
+import api from "../request_api/api_login";
+import { sesions, reset } from "../store/slice/seasionslice";
+import { useDispatch } from "react-redux";
 import { Button, Form, Row, Col, Container, Card } from "react-bootstrap";
-import api from "../../request_api/api_login";
 import { useSelector } from "react-redux";
 
 const Home = () => {

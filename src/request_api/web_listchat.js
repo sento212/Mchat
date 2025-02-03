@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { reset } from "../store/slice/seasionslice";
+import { reset } from "/src/store/slice/seasionslice";
 
 export default function listchat(token, id, setHasil) {
   try {

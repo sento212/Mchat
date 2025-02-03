@@ -17,7 +17,7 @@ import {
   Col,
   Container,
 } from "react-bootstrap";
-import { api, api_tambah } from "../../../request_api/api_temen";
+import { api, api_tambah } from "../../request_api/api_temen";
 
 const Mainpage = () => {
   const [show, setShow] = useState(false);

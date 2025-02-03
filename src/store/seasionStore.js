@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import sessionSlice from "./slice/seasionslice";
+import { sessionReducer } from "./slice/seasionslice";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
@@ -8,7 +8,7 @@ const persistConfig = {
   storage,
 };
 
-const sessionslice = persistReducer(persistConfig, sessionSlice);
+const sessionslice = persistReducer(persistConfig, sessionReducer);
 
 // store
 const store = configureStore({

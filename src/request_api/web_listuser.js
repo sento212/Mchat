@@ -32,7 +32,7 @@ export function listpeople(token) {
         }
       }
       if (connectionStatus == "Closed") {
-        setHasil([sendMessage, lastMessage.data, connectionStatus]);
+        // setHasil([sendMessage, lastMessage.data, connectionStatus]);
         if (lastMessage != null) {
           let pesan = JSON.parse(lastMessage.data);
           if (pesan.status == 401) {
@@ -49,6 +49,19 @@ export function listpeople(token) {
               }
             });
           }
+        } else {
+          Swal.fire({
+            title: `Cannot connect to the server please wait for a moment`,
+            showConfirmButton: false,
+            showDenyButton: true,
+            denyButtonText: `OK`,
+            allowOutsideClick: false,
+          }).then((result) => {
+            if (result.isDenied) {
+              dispatch(reset());
+              router.push("/");
+            }
+          });
         }
       }
     }, [connectionStatus, lastMessage]);

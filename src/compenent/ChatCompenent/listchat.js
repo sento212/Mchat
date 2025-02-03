@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Stack, Row, Col, Image, ListGroup } from "react-bootstrap";
-import { listpeople } from "../../../request_api/web_listuser";
+import { listpeople } from "../../request_api/web_listuser";
 
 export default function ListChat({ setCliked, Cliked, token, setEnemy }) {
   const { list } = listpeople(token);

@@ -3,7 +3,7 @@ import { Stack, Row, Image, Button } from "react-bootstrap";
 import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
-import { reset } from "../../../store/slice/seasionslice";
+import { reset } from "../../store/slice/seasionslice";
 import { useDispatch } from "react-redux";
 
 export default function Detailchat({ enemy }) {
