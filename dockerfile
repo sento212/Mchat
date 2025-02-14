@@ -13,5 +13,6 @@ RUN npm install
 ## confiugre listening port 
 EXPOSE 3000
 
+RUN npm run build
 ## make command to execute when we run the docker
-CMD npm run dev
+CMD ["npm","run","start"]

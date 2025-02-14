@@ -25,10 +25,10 @@ const store = configureStore({
     }),
 });
 
-console.log("store created : ", store.getState());
+// console.log("store created : ", store.getState());
 
 store.subscribe(() => {
-  console.log("store change : ", store.getState());
+  // console.log("store change : ", store.getState());
 });
 
 const persistor = persistStore(store);

@@ -7,17 +7,25 @@ import { sesions, reset } from "../store/slice/seasionslice";
 import { useDispatch } from "react-redux";
 import { Button, Form, Row, Col, Container, Card } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import Link from "next/link";
 
 const Home = () => {
   const [username, setUsername] = useState("");
   const [passwoard, setPasswoard] = useState("");
+  const [shew, setShew] = useState("NO");
   const Session = useSelector((state) => state.Session.value);
   const dispatch = useDispatch();
   const router = useRouter();
 
-  if (Session["status_login"] == "yes") {
-    router.push("/dashboard");
-  } else {
+  useEffect(() => {
+    if (Session["status_login"] == "yes") {
+      router.push("/dashboard");
+    } else {
+      setShew("YES");
+    }
+  }, []);
+
+  if (shew == "YES") {
     return show();
   }
 
@@ -28,9 +36,9 @@ const Home = () => {
     };
     if (username != "" || passwoard != "") {
       const response = await api(data);
-      let hasil = response.data;
-      if (hasil["status"] == 200) {
-        if (hasil["data"].length != 0) {
+      if (response["status"] == 200) {
+        let hasil = response.data;
+        if (hasil["status"] == 200) {
           dispatch(
             sesions({
               username: hasil["data"][0]["username"],
@@ -83,6 +91,10 @@ const Home = () => {
                   >
                     Login
                   </Button>
+                </Col>
+                <Col sm={12}>
+                  don't have an account???{" "}
+                  <Link href="/daftar">sign up here!!!</Link>
                 </Col>
               </Row>
             </Card>

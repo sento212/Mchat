@@ -28,11 +28,14 @@ const Mainpage = () => {
   const [Cliked, setCliked] = useState("");
   const [enemy, setEnemy] = useState("");
   const [Testing, setTest] = useState([]);
-  const hasRun = useRef("");
+  const hasRun = useRef(null);
+  const [shew, setShew] = useState("NO");
 
   useEffect(() => {
     if (Session["status_login"] != "yes") {
       router.replace("/");
+    } else {
+      setShew("YES");
     }
   }, []);
 
@@ -84,9 +87,7 @@ const Mainpage = () => {
     }
   }, [Cliked]);
 
-  if (Session["status_login"] != "yes") {
-    router.push("/");
-  } else {
+  if (shew == "YES") {
     return Tampilan();
   }
 

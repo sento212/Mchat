@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
-import { reset } from "/src/store/slice/seasionslice";
+import { reset } from "../store/slice/seasionslice";
 
 export default function listchat(token, id, setHasil) {
   try {
     const [pesane, setHasil] = useState({});
     const [socketUrl] = useState(
-      `ws://localhost:8765/chat?Authorization=${token}&conversation_id=${id}`
+      `ws://152.42.226.71:80/chat?Authorization=${token}&conversation_id=${id}`
     );
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
