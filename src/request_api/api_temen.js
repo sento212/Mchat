@@ -3,7 +3,7 @@ import axios from "axios";
 export async function api(cari, token) {
   try {
     const response = axios.get(
-      `http://152.42.226.71:81/temenlah?cari=${cari}`,
+      `https://sento.my.id/sento/backend/temenlah?cari=${cari}`,
       {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -22,12 +22,16 @@ export async function api(cari, token) {
 
 export async function api_tambah(data, token) {
   try {
-    const response = axios.put(`http://152.42.226.71:81/temenlah`, data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-        Authorization: `Bearer ${token}`,
-      },
-    });
+    const response = axios.put(
+      `https://sento.my.id/sento/backend/temenlah`,
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
     return response;
   } catch (error) {
     return {

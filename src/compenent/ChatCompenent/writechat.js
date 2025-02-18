@@ -75,7 +75,8 @@ export default function Isichat({ token, id, user }) {
       <Row
         className=" align-items-end"
         style={{
-          backgroundImage: "url('/images/26669.jpg')",
+          backgroundImage:
+            "url('http://localhost:3000/sento/mchat/images/26669.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",

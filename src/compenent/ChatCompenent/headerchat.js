@@ -17,7 +17,7 @@ export default function Detailchat({ enemy }) {
     >
       <Stack direction="horizontal" className="align-items-center" gap={3}>
         <Image
-          src="/images/testingaaa.jpg"
+          src="/sento/mchat/images/testingaaa.jpg"
           width={40}
           height={10}
           className="border border-dark-subtle"

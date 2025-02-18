@@ -9,7 +9,7 @@ export default function listchat(token, id, setHasil) {
   try {
     const [pesane, setHasil] = useState({});
     const [socketUrl] = useState(
-      `ws://152.42.226.71:80/chat?Authorization=${token}&conversation_id=${id}`
+      `wss://sento.my.id/sento/websocket/chat?Authorization=${token}&conversation_id=${id}`
     );
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);

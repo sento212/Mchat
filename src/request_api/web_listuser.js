@@ -9,7 +9,7 @@ export function listpeople(token) {
   try {
     const [list, setHasil] = useState({});
     const [socketUrl] = useState(
-      `ws://152.42.226.71:80/temenlah?Authorization=${token}`
+      `wss://sento.my.id/sento/websocket/temenlah?Authorization=${token}`
     );
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);

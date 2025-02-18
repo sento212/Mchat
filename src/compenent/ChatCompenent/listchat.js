@@ -62,7 +62,7 @@ function Show({ id, name, Cliked, setCliked, chat, date, setEnemy }) {
       <Row>
         <Col sm={2} className="ms-3 me-1 ps-1 p-0">
           <Image
-            src="/images/testingaaa.jpg"
+            src="/sento/mchat/images/testingaaa.jpg"
             width={50}
             height={100}
             className="border border-dark-subtle"

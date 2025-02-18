@@ -3,11 +3,15 @@ import axios from "axios";
 
 export default async function api(data) {
   try {
-    const response = axios.post("http://152.42.226.71:81/login", data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
+    const response = axios.post(
+      "https://sento.my.id/sento/backend/login",
+      data,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
     return response;
   } catch (error) {
     return {
