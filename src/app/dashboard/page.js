@@ -18,6 +18,8 @@ import {
   Container,
 } from "react-bootstrap";
 import { api, api_tambah } from "../../request_api/api_temen";
+import { listpeople } from "../../request_api/web_listuser";
+
 
 const Mainpage = () => {
   const [show, setShow] = useState(false);
@@ -27,9 +29,11 @@ const Mainpage = () => {
   const Session = useSelector((state) => state.Session.value);
   const [Cliked, setCliked] = useState("");
   const [enemy, setEnemy] = useState("");
+  const [check_Cari, setCheck] = useState("");
   const [Testing, setTest] = useState([]);
   const hasRun = useRef(null);
   const [shew, setShew] = useState("NO");
+  const { list_teman, sendMessage, list } = listpeople(Session["token"]);
 
   useEffect(() => {
     if (Session["status_login"] != "yes") {
@@ -38,6 +42,17 @@ const Mainpage = () => {
       setShew("YES");
     }
   }, []);
+
+  useEffect(() => {
+    if (list_teman["status"] == 201) {
+      Alert("Tambah temen berhasil", "temen ditambah", "success");
+      handleClose();
+    } else if(list_teman["status"] == 400) {
+      Alert("Gagal Login", list_teman["message"], "error");
+
+    }
+  }, [list_teman]);
+
 
   useEffect(() => {
     if (Cliked != "") {
@@ -123,6 +138,8 @@ const Mainpage = () => {
                   show={show}
                   handleClose={handleClose}
                   token={Session["token"]}
+                  sendMessage={sendMessage}
+                  setCheck={setCheck}
                 ></Modale>
               </Col>
             </Row>
@@ -138,8 +155,8 @@ const Mainpage = () => {
               <ListChat
                 setCliked={setCliked}
                 Cliked={Cliked}
-                token={Session["token"]}
                 setEnemy={setEnemy}
+                list={list}
               />
             </Row>
           </Col>
@@ -160,7 +177,7 @@ const Mainpage = () => {
   }
 };
 
-function Modale({ show, handleClose, token }) {
+function Modale({ show, handleClose, token, sendMessage, setCheck }) {
   const [list, setlist] = useState([]);
   const [Hasilcari, setHasilcari] = useState("");
 
@@ -176,18 +193,14 @@ function Modale({ show, handleClose, token }) {
   }
 
   async function tambah_le() {
-    const data = {
-      name_temen: Hasilcari,
-    };
-    const response = await api_tambah(data, token);
-    let hasil = response.data;
-    if (hasil["status"] == 200) {
-      Alert("Tambah temen berhasil", "temen ditambah", "success");
-      handleClose();
-    } else {
-      Alert("Gagal Login", hasil.message, "error");
-    }
+
+    const data = `{
+          "nama_temen": "${Hasilcari}",
+          "tipe": "put"
+      }`;
+    sendMessage(data);
   }
+
 
   return (
     <Modal

@@ -3,7 +3,7 @@ import axios from "axios";
 export async function api(cari, token) {
   try {
     const response = axios.get(
-      `https://sento.my.id/sento/backend/temenlah?cari=${cari}`,
+      `http://127.0.0.1:5000/temenlah?cari=${cari}`,
       {
         headers: {
           "Content-Type": "multipart/form-data",
@@ -23,7 +23,7 @@ export async function api(cari, token) {
 export async function api_tambah(data, token) {
   try {
     const response = axios.put(
-      `https://sento.my.id/sento/backend/temenlah`,
+      `http://127.0.0.1:5000/temenlah`,
       data,
       {
         headers: {
