@@ -8,8 +8,9 @@ import { reset } from "../store/slice/seasionslice";
 export function listpeople(token) {
   try {
     const [list, setHasil] = useState({});
+    const [list_teman, setHasiltemen] = useState({});
     const [socketUrl] = useState(
-      `wss://sento.my.id/sento/websocket/temenlah?Authorization=${token}`
+      `ws://localhost:8000/temenlah?Authorization=${token}`
     );
 
     const { sendMessage, lastMessage, readyState } = useWebSocket(socketUrl);
@@ -27,8 +28,17 @@ export function listpeople(token) {
     useEffect(() => {
       if (connectionStatus == "Open") {
         if (lastMessage != null) {
-          let pesan = JSON.parse(lastMessage.data);
-          setHasil(pesan);
+          let result = JSON.parse(lastMessage.data);
+          if(result['status'] == 200){
+            setHasil(result);
+            
+          }
+          else if(result['status'] == 201){
+            setHasiltemen(result);
+          }
+          else{
+            setHasiltemen(result);
+          }
         }
       }
       if (connectionStatus == "Closed") {
@@ -65,7 +75,7 @@ export function listpeople(token) {
         }
       }
     }, [connectionStatus, lastMessage]);
-    return { list };
+    return { list_teman,sendMessage, list };
   } catch (error) {
     return {
       status: 500,

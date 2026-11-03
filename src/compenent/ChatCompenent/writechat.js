@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane, faSpinner } from "@fortawesome/free-solid-svg-icons";
 import { Form, Stack, Row, Col } from "react-bootstrap";
 import listchat from "../../request_api/web_listchat";
+// import { list } from "../../request_api/web_listuser";
 
 export default function Isichat({ token, id, user }) {
   const [Chat, setChat] = useState("");
   const containerRef = useRef(null);
 
   const { sendMessage, pesane } = listchat(token, id);
+
 
   return Tampilan(pesane, user);
 
@@ -64,12 +66,21 @@ export default function Isichat({ token, id, user }) {
       setChat("");
     }
 
+
     useEffect(() => {
       const element = containerRef.current;
       if (element) {
         element.scrollTop = element.scrollHeight;
       }
     }, [pesan]);
+
+
+    const handleKeyDown = (e) => {
+      // Check if the pressed key is "Enter"
+      if (e.key === 'Enter') {
+        sendchat();
+      }
+    };
 
     return (
       <Row
@@ -118,8 +129,9 @@ export default function Isichat({ token, id, user }) {
             <Form.Control
               value={Chat}
               onChange={(e) => setChat(e.target.value)}
+              onKeyDown={handleKeyDown}
             ></Form.Control>
-            <button onClick={sendchat} className="flex-shrink-0">
+            <button onClick={() => {sendchat();}} className="flex-shrink-0">
               <FontAwesomeIcon icon={faPaperPlane} size="xl" />
             </button>
           </Stack>

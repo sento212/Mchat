@@ -4,7 +4,7 @@ import axios from "axios";
 export default async function api(data) {
   try {
     const response = axios.post(
-      "https://sento.my.id/sento/backend/login",
+      "http://127.0.0.1:5000/login",
       data,
       {
         headers: {
